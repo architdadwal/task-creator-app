@@ -1,8 +1,6 @@
-// Update your root layout to include the AuthProvider.
-
 import { Inter } from "next/font/google";
-import "./globals.css"; // Assuming you have this
-import { AuthProvider } from "../context/AuthContext"; // Adjust path
+import "./globals.css";
+import { AuthProvider } from "../context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
 

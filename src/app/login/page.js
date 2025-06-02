@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "../../context/AuthContext"; // Adjust path
+import { useAuth } from "../../context/AuthContext";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -14,9 +14,8 @@ export default function LoginPage() {
   const router = useRouter();
 
   if (currentUser && typeof window !== "undefined") {
-    // Prevent redirect during SSR or if currentUser not yet loaded
     router.push("/");
-    return null; // Or a loading spinner
+    return null;
   }
 
   const handleSubmit = async (e) => {
@@ -25,7 +24,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await login(email, password);
-      router.push("/"); // Redirect to tasks page (homepage)
+      router.push("/");
     } catch (err) {
       setError(
         err.message || "Failed to log in. Please check your credentials."
@@ -34,7 +33,6 @@ export default function LoginPage() {
     setLoading(false);
   };
 
-  // Reusing styles from SignupPage for consistency
   const pageStyle = {
     display: "flex",
     flexDirection: "column",

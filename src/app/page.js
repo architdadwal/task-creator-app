@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext"; // Adjust path
+import { useAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
@@ -11,9 +11,8 @@ export default function HomePage() {
   const [taskText, setTaskText] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [isLoadingTasks, setIsLoadingTasks] = useState(true); // For loading tasks
+  const [isLoadingTasks, setIsLoadingTasks] = useState(true);
 
-  // --- Task specific localStorage (scoped to user) ---
   const getTasksFromLocalStorage = (userEmail) => {
     if (typeof window !== "undefined" && userEmail) {
       const storedTasks = localStorage.getItem(`tasks_${userEmail}`);
@@ -27,7 +26,6 @@ export default function HomePage() {
       localStorage.setItem(`tasks_${userEmail}`, JSON.stringify(currentTasks));
     }
   };
-  // --- End Task specific localStorage ---
 
   useEffect(() => {
     if (!authLoading) {
@@ -85,7 +83,7 @@ export default function HomePage() {
     return new Date(dateString + "T00:00:00").toLocaleDateString(
       undefined,
       options
-    ); // Ensure date is parsed correctly
+    );
   };
 
   // Styles (similar to previous, with additions for header)
